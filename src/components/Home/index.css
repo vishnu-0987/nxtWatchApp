@@ -1,0 +1,143 @@
+.bg-home-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Roboto';
+}
+
+.home-main-bg-container {
+  min-height: 88.8vh;
+  display: flex;
+  width: 100%;
+}
+
+.home-dashboard-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 90%;
+  width: 17%;
+  justify-content: space-between;
+  position: fixed;
+}
+
+.dark-dashboard {
+  background-color: #272727;
+}
+
+.light-dashboard {
+  background-color: white;
+}
+
+.upper-dashboard-content {
+  padding: 0;
+  list-style-type: none;
+}
+
+.sidebar-logos {
+  font-size: 18px;
+}
+
+.lower-dashboard-content {
+  display: flex;
+  flex-direction: column;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.social-media-container {
+  display: flex;
+  align-items: center;
+  width: 65%;
+  justify-content: space-between;
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+
+.social-media-heading-dark {
+  color: white;
+}
+
+.social-media-heading-light {
+  color: black;
+}
+
+.social-media-para-dark {
+  color: white;
+  margin-bottom: 40px;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.social-media-para-light {
+  color: #1e293b;
+  margin-bottom: 40px;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.social-media-container img {
+  width: 35px;
+}
+
+.home-content-container {
+  min-height: 100%;
+  width: 100%;
+  margin-left: 17%;
+}
+
+.dark-home-content {
+  background-color: #181818;
+}
+.light-home-content {
+  background-color: #f9f9f9;
+}
+
+.banner-close {
+  display: none;
+}
+
+.home-container-premium-banner {
+  display: flex;
+  align-items: flex-start;
+  font-family: 'Roboto';
+  justify-content: space-between;
+  background-color: white;
+  height: 280px;
+  max-width: 100%;
+  background-image: url('https://assets.ccbp.in/frontend/react-js/nxt-watch-banner-bg.png');
+  background-size: cover;
+}
+
+.left-premium-content {
+  padding: 30px 20px;
+  width: 350px;
+}
+
+.left-premium-content img {
+  width: 50%;
+}
+
+.left-premium-content p {
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 40px;
+}
+
+.left-premium-content button {
+  background-color: transparent;
+  border: solid 2px black;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 10px;
+  word-spacing: 0px;
+  cursor: pointer;
+}
+
+.close-button {
+  font-size: 20px;
+  margin-right: 15px;
+  margin-top: 15px;
+  cursor: pointer;
+}

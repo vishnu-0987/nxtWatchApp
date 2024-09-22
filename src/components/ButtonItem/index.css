@@ -1,0 +1,58 @@
+.button-list-item {
+  display: flex;
+  align-items: center;
+  padding: 0px 20px;
+  cursor: pointer;
+  background-color: transparent;
+  font-family: 'Roboto';
+}
+
+.light-selected-sidebar-button {
+  background-color: #e2e8f0;
+  color: black;
+}
+.dark-selected-sidebar-button {
+  background-color: #383838;
+  color: white;
+}
+
+.dark-sidebar-button {
+  color: white;
+}
+
+.light-sidebar-button {
+  color: black;
+}
+
+.button-list-item p {
+  font-size: 15px;
+  margin-left: 25px;
+}
+
+.dark-sidebar-button:hover {
+  background-color: #383838;
+  color: white;
+}
+
+.light-sidebar-button:hover {
+  background-color: #e2e8f0;
+  color: black;
+}
+
+.selected-sidebar {
+  display: flex;
+  align-items: center;
+  padding: 0px 20px;
+  cursor: pointer;
+
+  font-family: 'Roboto';
+}
+
+.selected-sidebar p {
+  font-size: 15px;
+  margin-left: 25px;
+}
+
+.selected-sidebar .sidebar-logos {
+  color: red; /* This changes the icon color when selected */
+}

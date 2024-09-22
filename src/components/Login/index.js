@@ -5,12 +5,24 @@ import Theme from '../../Context/Theme'
 import './index.css'
 
 class Login extends Component {
-  state = {username: '', password: '', errorMsg: '', isError: false}
+  state = {
+    username: '',
+    password: '',
+    errorMsg: '',
+    isChecked: false,
+    isError: false,
+  }
 
   changeUsername = e => {
     this.setState({
       username: e.target.value,
     })
+  }
+
+  changeType = () => {
+    this.setState(prev => ({
+      isChecked: !prev.isChecked,
+    }))
   }
 
   changePassword = e => {
@@ -58,53 +70,100 @@ class Login extends Component {
   }
 
   render() {
-    const {username, password, isError, errorMsg} = this.state
+    const {username, password, isError, isChecked, errorMsg} = this.state
     const jwtToken = Cookies.get('jwt_token')
     if (jwtToken !== undefined) {
       return <Redirect to="/" />
     }
     return (
-      <div className="login-bg-container">
-        <div className="login-container">
-          <img
-            src="https://assets.ccbp.in/frontend/react-js/logo-img.png"
-            alt="website logo"
-            className="login-logo"
-          />
-          <form className="form-login-container" onSubmit={this.submitForm}>
-            <div className="input-label-div">
-              <label className="label" htmlFor="username">
-                USERNAME
-              </label>
-              <input
-                type="text"
-                className="input-field"
-                placeholder="Username"
-                id="username"
-                value={username}
-                onChange={this.changeUsername}
-              />
+      <Theme.Consumer>
+        {value => {
+          const {isDark} = value
+          console.log(isDark)
+
+          return (
+            <div
+              className={
+                isDark ? 'login-bg-dark-container' : 'login-bg-light-container'
+              }
+            >
+              <div
+                className={
+                  isDark ? 'login-dark-container' : 'login-light-container'
+                }
+              >
+                <img
+                  src={
+                    isDark
+                      ? 'https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-dark-theme-img.png'
+                      : 'https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png'
+                  }
+                  alt="website logo"
+                  className="login-logo"
+                />
+                <form
+                  className="form-login-container"
+                  onSubmit={this.submitForm}
+                >
+                  <div className="input-label-div">
+                    <label
+                      className={isDark ? 'label-dark' : 'label-light'}
+                      htmlFor="username"
+                    >
+                      USERNAME
+                    </label>
+                    <input
+                      type="text"
+                      className={`input-field ${
+                        isDark ? 'input-dark-field' : 'input-light-field'
+                      }`}
+                      placeholder="Username"
+                      id="username"
+                      value={username}
+                      onChange={this.changeUsername}
+                    />
+                  </div>
+                  <div className="input-label-div">
+                    <label
+                      className={isDark ? 'label-dark' : 'label-light'}
+                      htmlFor="password"
+                    >
+                      PASSWORD
+                    </label>
+                    <input
+                      type={isChecked ? 'text' : 'password'}
+                      className="input-field"
+                      placeholder="Password"
+                      id="password"
+                      value={password}
+                      onChange={this.changePassword}
+                    />
+                    <div className="show-password-container">
+                      <input
+                        type="checkbox"
+                        id="checkbox"
+                        onChange={this.changeType}
+                      />
+                      <label
+                        htmlFor="checkbox"
+                        className={
+                          isDark ? 'label-show-dark' : 'label-show-light'
+                        }
+                      >
+                        Show Password
+                      </label>
+                    </div>
+                  </div>
+                  <button type="submit" className="login-submit-button">
+                    Login
+                  </button>
+                  {isError && <p className="error-msg">*{errorMsg}</p>}
+                </form>
+              </div>
             </div>
-            <div className="input-label-div">
-              <label className="label" htmlFor="password">
-                PASSWORD
-              </label>
-              <input
-                type="password"
-                className="input-field"
-                placeholder="Password"
-                id="password"
-                value={password}
-                onChange={this.changePassword}
-              />
-            </div>
-            <button type="submit" className="login-submit-button">
-              Login
-            </button>
-            {isError && <p className="error-msg">*{errorMsg}</p>}
-          </form>
-        </div>
-      </div>
+          )
+        }}
+      </Theme.Consumer>
     )
   }
 }
