@@ -1,0 +1,154 @@
+.video-details-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 22px 15px;
+}
+
+.video-details-title {
+  font-size: 16px;
+  font-weight: 500;
+  color: black;
+}
+
+.video-details-title-dark {
+  color: white;
+}
+
+.views-and-likes-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.views-and-likes-container div p,
+span {
+  color: #475569;
+}
+.views-and-likes-container-dark div p,
+span {
+  color: #64748b;
+}
+
+.views-and-time-container {
+  display: flex;
+  align-items: center;
+}
+
+.likes-dislikes-and-save-container {
+  display: flex;
+  align-items: center;
+}
+
+.dot {
+  font-size: 20px;
+  margin-top: 5px;
+  margin-left: 7px;
+  margin-right: 7px;
+}
+
+.likes-dislikes-and-save-container {
+  display: flex;
+  align-items: center;
+  padding-right: -15px;
+}
+
+.likes-dislikes-and-save-container div {
+  display: flex;
+  align-items: center;
+}
+
+.button-like {
+  border: none;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  margin-right: 25px;
+  font-size: 16px;
+  color: #475569;
+  font-family: 'Roboto';
+  cursor: pointer;
+}
+
+.button-like-dark {
+  color: #64748b;
+}
+
+.liked-disliked-css {
+  color: #475569;
+  font-size: 20px;
+  margin-right: 4px;
+}
+
+.liked-disliked-dark-css {
+  color: #64748b;
+  font-size: 20px;
+  margin-right: 4px;
+}
+
+.blue-color {
+  color: #3b82f6;
+  font-size: 20px;
+}
+
+.hr-line {
+  border: solid 1px rgb(227, 226, 226);
+  width: 101%;
+  margin-top: 15px;
+}
+
+.hr-line-dark {
+  border: solid 1px #475569;
+}
+
+.video-details-bottom-container {
+  display: flex;
+  align-items: flex-start;
+  margin-top: 25px;
+}
+
+.video-details-bottom-container img {
+  height: 50px;
+  width: 50px;
+  margin-right: 20px;
+}
+
+.right-video-details-bottom-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: -12px;
+  font-family: 'Roboto';
+}
+
+.channel-name {
+  font-size: 15px;
+  font-weight: 500;
+  margin-bottom: 0px;
+}
+
+.channel-name-dark {
+  color: rgb(207, 207, 207);
+}
+
+.subscriber-count {
+  font-size: 13px;
+  margin-top: 8px;
+  color: #475569;
+}
+
+.subscriber-count-dark {
+  color: #889dbb;
+}
+
+.description-channel {
+  font-size: 15px;
+  /* font-weight: 500; */
+  margin-top: 20px;
+  color: #475467;
+  line-height: 1.6;
+}
+
+.description-channel-dark {
+  color: rgb(207, 207, 207);
+}

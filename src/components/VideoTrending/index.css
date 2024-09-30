@@ -1,0 +1,27 @@
+.li-container-trending {
+  display: flex;
+  width: 100%;
+  align-items: flex-start;
+  margin-bottom: 90px;
+}
+
+.link-trending-container {
+  display: flex;
+  width: 100%;
+  align-items: flex-start;
+}
+
+.li-container-trending img {
+  height: 250px;
+  width: 600px;
+  margin-right: 25px;
+}
+
+.right-video-trending-css {
+  width: 100%;
+  margin-top: -10px;
+}
+
+.right-video-trending-css h1 {
+  font-size: 21px;
+}

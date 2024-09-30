@@ -1,0 +1,7 @@
+.ul-container-gaming {
+  list-style-type: none;
+  padding: 40px;
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}

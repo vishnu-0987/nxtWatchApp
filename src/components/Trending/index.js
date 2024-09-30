@@ -2,10 +2,11 @@ import {Component} from 'react'
 import Loader from 'react-loader-spinner'
 
 import {IoMdClose, IoIosSearch} from 'react-icons/io'
+import {HiFire} from 'react-icons/hi'
 
 import Cookies from 'js-cookie'
 import Header from '../Header'
-import VideoItem from '../VideoItem'
+import VideoTrending from '../VideoTrending'
 import Sidebar from '../Sidebar'
 import Theme from '../../Context/Theme'
 
@@ -18,10 +19,8 @@ const loadingOptions = {
   failed: 'FAILED',
 }
 
-class Home extends Component {
+class Trending extends Component {
   state = {
-    bannerClose: false,
-    searchInput: '',
     videosList: [],
     isLoading: loadingOptions.initial,
   }
@@ -31,7 +30,7 @@ class Home extends Component {
   }
 
   getVideosList = async () => {
-    const {searchInput, videosList} = this.state
+    const {videosList} = this.state
     this.setState({
       isLoading: loadingOptions.inProgress,
     })
@@ -43,7 +42,7 @@ class Home extends Component {
       },
     }
     const response = await fetch(
-      `https://apis.ccbp.in/videos/all?search=${searchInput}`,
+      `https://apis.ccbp.in/videos/trending`,
       options,
     )
     if (response.ok) {
@@ -70,18 +69,6 @@ class Home extends Component {
     }
   }
 
-  bannerChange = () => {
-    this.setState(prev => ({
-      bannerClose: !prev.bannerClose,
-    }))
-  }
-
-  searchInputChange = e => {
-    this.setState({
-      searchInput: e.target.value,
-    })
-  }
-
   searchClick = () => {
     this.getVideosList()
   }
@@ -101,31 +88,11 @@ class Home extends Component {
     const {videosList} = this.state
 
     return (
-      <>
-        {videosList.length === 0 ? (
-          <div
-            className={`failure-output-container ${
-              isDark ? 'failure-dark' : 'failure-light'
-            }`}
-          >
-            <img
-              src="https://assets.ccbp.in/frontend/react-js/nxt-watch-no-search-results-img.png"
-              alt="no videos"
-            />
-            <h1>No Search results found</h1>
-            <p>Try different key words or remove search filter</p>
-            <button type="button" onClick={this.searchClick}>
-              Retry
-            </button>
-          </div>
-        ) : (
-          <ul className="ul-container">
-            {videosList.map(item => (
-              <VideoItem details={item} key={item.id} isDark={isDark} />
-            ))}
-          </ul>
-        )}
-      </>
+      <ul className="ul-container-trending">
+        {videosList.map(item => (
+          <VideoTrending details={item} key={item.id} isDark={isDark} />
+        ))}
+      </ul>
     )
   }
 
@@ -169,69 +136,36 @@ class Home extends Component {
   }
 
   render() {
-    const {bannerClose, searchInput} = this.state
     return (
       <Theme.Consumer>
         {value => {
           const {isDark} = value
 
           return (
-            <div className="bg-home-container" data-testid="home">
+            <div className="bg-home-container" data-testid="trending">
               <Header />
               <div className="home-main-bg-container">
-                <Sidebar clicked="Home" />
+                <Sidebar clicked="Trending" />
                 <div
                   className={`home-content-container ${
                     isDark ? 'dark-home-content' : 'light-home-content'
                   }`}
                 >
                   <div
-                    className={
-                      !bannerClose
-                        ? 'home-container-premium-banner'
-                        : 'banner-close'
-                    }
-                    data-testid="banner"
+                    className={`heading-section ${
+                      isDark ? 'heading-section-dark' : ''
+                    }`}
                   >
-                    <div className="left-premium-content">
-                      <img
-                        src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png"
-                        alt="nxt watch logo"
-                      />
-                      <p>Buy Nxt Watch Premium prepaid plans with UPI</p>
-                      <button type="button">GET IT NOW</button>
+                    <div
+                      className={`logo-trending-container ${
+                        isDark ? 'logo-trending-container-dark' : ''
+                      }`}
+                    >
+                      <HiFire className="hifire-heading" />
                     </div>
-
-                    <IoMdClose
-                      data-testid="close"
-                      className="close-button"
-                      onClick={this.bannerChange}
-                    />
+                    <h1>Trending</h1>
                   </div>
-                  <div className="home-main-videos-container">
-                    <div className="search-bar-container">
-                      <input
-                        className={`search-input ${
-                          isDark ? 'dark-search' : 'light-search'
-                        }`}
-                        placeholder="Search"
-                        type="search"
-                        value={searchInput}
-                        onChange={this.searchInputChange}
-                      />
-                      <div
-                        className={`search-logo-container ${
-                          isDark ? 'search-logo-dark' : 'search-logo-light'
-                        }`}
-                      >
-                        <IoIosSearch
-                          data-testid="searchButton"
-                          onClick={this.searchClick}
-                        />
-                      </div>
-                    </div>
-                    {this.renderVideosSection(isDark)}
-                  </div>
+                  {this.renderVideosSection(isDark)}
                 </div>
               </div>
             </div>
@@ -242,4 +176,4 @@ class Home extends Component {
   }
 }
 
-export default Home
+export default Trending

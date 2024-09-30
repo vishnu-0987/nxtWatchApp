@@ -1,3 +1,7 @@
+.link-button-item {
+  text-decoration: none;
+}
+
 .button-list-item {
   display: flex;
   align-items: center;
